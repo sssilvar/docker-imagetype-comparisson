@@ -1,0 +1,29 @@
+# Docker compose to benchmark the use of normal vs distroless images
+
+services:
+  normal:
+    build:
+      context: .
+      dockerfile: Dockerfile.normal
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080
+
+  distroless:
+    build:
+      context: .
+      dockerfile: Dockerfile.distroless
+    environment:
+      - PORT=8081
+    ports:
+      - 8081:8081
+
+  uv:
+    build:
+      context: .
+      dockerfile: Dockerfile.uv
+    environment:
+      - PORT=8082
+    ports:
+      - 8082:8082

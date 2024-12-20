@@ -1,0 +1,16 @@
+# Use a minimal base image
+FROM python:3.13-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements and install dependencies
+# Clean up cache after installation
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY hello.py .
+
+# Use CMD for the application
+CMD ["python", "hello.py"]
